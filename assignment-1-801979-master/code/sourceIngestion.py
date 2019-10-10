@@ -16,4 +16,3 @@ class sourceIngestion:
         }
         return data
 
-# TODO understand type of data, problem with the filter in the get

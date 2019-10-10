@@ -14,8 +14,11 @@ mongo = PyMongo(app)
 def get_one(partid):
     documents = mongo.db.documents
 
-    query  = documents.find({'part_id': int(partid)})
-    if query:
+    query = documents.find({'part_id': int(partid)})
+    if not query:
+        results = 'No results found'
+
+    else:
         results = []
         for q in query:
             data = {
@@ -25,9 +28,8 @@ def get_one(partid):
                 'room': q['room']
             }
             results.append(data)
-    else:
-        results = 'No results found'
     return jsonify({'result': results})
+#TODO check if empty
 
 @app.route('/document',methods=['POST'])
 def insert_one():
@@ -43,7 +45,6 @@ def insert_one():
                 'room': room
             }
     message = producer(json.dumps(new_record))
-    print(message)
 
     return message
 
@@ -53,7 +54,9 @@ if __name__ == '__main__':
 
 
 #TODO CHANGE PASSWORD
-# TODO fix get
-# TODO test insert
 # TODO create api for initial delivery
-# TODO DEAMON
+
+
+# TODO report
+# TODO readme
+# TODO prepare delivery
