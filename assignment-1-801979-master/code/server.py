@@ -57,6 +57,6 @@ if __name__ == '__main__':
 # TODO create api for initial delivery
 
 
-# TODO report
+# TODO report check structure delivery
 # TODO readme
 # TODO prepare delivery

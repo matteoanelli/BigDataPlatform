@@ -12,6 +12,9 @@ message broker so there is no need to modify the API that interact with the user
 storage. Between the message broker and the data storage there is a deamon program that map the message from the broker
 to the data storage.
 
+![](Design.png)
+
+
 Now that the global idea is explained, we define the main thecnology and components of our system.
 To implement the **mysimbdp-daas** Flask has been used. It generate an end point and the APIs that interact with the users. The APIs are made for both: general user and admin users.
 We used rabbitMQ as message broker since it has easy set up and deployment as well as it has all the feature required for 
