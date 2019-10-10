@@ -7,13 +7,13 @@ import csv
 import pymongo
 from sourceIngestion import sourceIngestion
 
-client = pymongo.MongoClient("mongodb+srv://MatteoAnelli:@mysimbdp-coredms-novzr.mongodb.net/test?retryWrites=true&w=majority")
-db = client.get_database('rooms')
+client = pymongo.MongoClient("mongodb+srv://MatteoAnelli:zHgn9oe2DpM2AJNV@mysimbdp-coredms-novzr.mongodb.net/test?retryWrites=true&w=majority")
+db = client.get_database('test')
 records = db.documents
 
 with open(sys.argv[1]) as f:
     reader = csv.reader(f)
-    #next(reader) # skip header
+    next(reader) # skip header
     data = [r for r in reader]
 insert = []
 for i in data:
@@ -22,7 +22,7 @@ for i in data:
 
 records.insert_many(insert)
 
-
+#TODO change arcv[0]
 
 
 

@@ -1,9 +1,9 @@
 # script that ingest data inside the dms
-
+import json
 class sourceIngestion:
     def __init__(self, part_id, ts_date, ts_time, room):
-        self.part_id = part_id
-        self.ts_date = ts_date
+        self.part_id = int(part_id)
+        self.ts_date = int(ts_date)
         self.ts_time = ts_time
         self.room = room
 
@@ -16,4 +16,4 @@ class sourceIngestion:
         }
         return data
 
-
+# TODO understand type of data, problem with the filter in the get
