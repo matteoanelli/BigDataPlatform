@@ -37,9 +37,22 @@ the mongoDB data storage.
 
 
 ## 2. Explain how many nodes are needed in the deployment of mysimbdp-coredms so that this component can work property (theoretically based on the selected technology)
-3 explain why
+The **mysimbdp-coredms**, as mentioned before, has been implemented using mongoDB. Specifically, using the fully-managed cloud solution
+mongoDB Atlas. This solution was mainly selected since it is an easy implementation. 3 nodes have been deployed as minimum 
+value needed to guarantee that the components work properly. The selected number is due to the fact that the minimum 
+architecture of a replica set has three members. A primary node and two secondary nodes where the data are replicated. Both the secondaries can become the primary in an election
+(it occur when the primary becomes unavailable and the replica set members autonomously
+select a new primary), following a figure to show the schema.
+
+
+![](Replica.png)
+
+Given that the data are replicated in all the two secondaries, this deployment provides full tolerance
+and high availability since in case of an unavailability of a node, the cluster is still composed by a primary node 
+as well as by a replica. Moreover, in the selected solution (moongoDB Atlas), a rollback is implemented where
+write operations on a former primary when the member rejoins the replica set after a failover.
 ## 3. Will you use VMs or containers for mysimbdp and explain the reasons for each component
-In opinio of Andrea the system for big data process had hoop they are not good in container, effimera memoria 
+In opinion of Andrea the system for big data process had hoop they are not good in container, effimera memoria 
 Non virtualizzerei i container
 ## 4. Explain how would you scale mysimbdp to allow a lot of users using mysimbdp-dataingest to push data into mysimbdp
 
