@@ -1,3 +1,9 @@
-# Assignment Assignment_NR  Your_STUDENTID
+# Assignment Assignment_1  Your_801979
 
-> Guide line: This is the file where you will explain the structure of your assignment delivery. Remember to replace **Assignment_NR** with the number of the assignment (e.g., 1, 2, 3, or 4) and **Your_STUDENTID** with your student number. Remove all guidelines from the template.
+This repository contains all the files for the delivery of the assignment 1
+
+I wrote all the answers to the questions in the report.md inside the reports directory.
+
+The deployment steps to follow are in the Assignment1-Deployment.MD
+
+

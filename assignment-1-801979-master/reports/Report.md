@@ -105,9 +105,8 @@ When the number of concurrent ingestion was 100 my system started to have some f
 ## 1. Assume that each of your tenants/users will need a dedicated mysimbdp-coredms. Design the data schema of service information for mysimbdp-coredms that can be published into an existing registry (like ZooKeeper, consul or etcd) so that you can find information about which mysimbdp-coredms for which tenants/users.
 ## 2. Assume that the service information about mysimbdp-coredms for a tenant/users is in a file, write a program that can be used to publish the service information of mysimbdp- coredms into either etcd, consul or Zookeeper 
 ## 3. Explain how you would change the implementation of mysimbdp-dataingest (in Part 2) to integrate a service discovery feature (no implementation is required) 
-## 4. Explain APIs you would design for mysimbdp-daas so that any other developer who wants to implement mysimbdp-dataingest can write his/her own ingestion program to write the data into mysimbdp-coredms by calling mysimbdp-daas (1 point)
+I will change the **mysimbdp-datainges** to have a microservice-base architecture so that we can increase the modularity. The service discovery will be used to automatically detect the different data ingestion locations.
+## 4. Explain APIs you would design for mysimbdp-daas so that any other developer who wants to implement mysimbdp-dataingest can write his/her own ingestion program to write the data into mysimbdp-coredms by calling mysimbdp-daas 
+The API should provide a means for any developer to perform insert on a large number of entry. In addition, they can perform updates on various attributes. Hence, the API should have an endpoint that can accept in input one or more files and that it is flexible on the structure of it.
 ## 5. Assume that now only mysimbdp-daas can read and write data into mysimbdp-coredms, how would you change your mysimbdp-dataingest (in Part 2) to work with mysimbdp- daas 
-
-
-
-
+This solution can be implemented adding a new API to the actual server where it can get as input the whole csv file so that the source ingestion should passed from the **mysimbdp-daas** and not directly to the database.
