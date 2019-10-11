@@ -2,12 +2,11 @@
 import pika, os, json
 import pymongo
 
-client = pymongo.MongoClient("mongodb+srv://MatteoAnelli:zHgn9oe2DpM2AJNV@mysimbdp-coredms-novzr.mongodb.net/test?retryWrites=true&w=majority")
+client = pymongo.MongoClient(os.environ.get('MONGO_URL'))
 db = client.get_database('test')
 records = db.documents
 
-# Access the CLODUAMQP_URL environment variable and parse it (fallback to localhost)
-url = os.environ.get('CLOUDAMQP_URL', 'amqp://lglizjgp:ZHTrNmxKUo5sjiTgux_OOvmvSfnJUvao@moose.rmq.cloudamqp.com/lglizjgp')
+url = os.environ.get('CLOUDAMQP_URL')
 params = pika.URLParameters(url)
 connection = pika.BlockingConnection(params)
 channel = connection.channel() # start a channel
@@ -22,4 +21,3 @@ channel.basic_consume('user',
 print(' [*] Waiting for messages:')
 channel.start_consuming()
 
-# TODO set global variable or parameters

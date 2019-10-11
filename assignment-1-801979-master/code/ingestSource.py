@@ -2,12 +2,12 @@
 
 # read the input data
 
-import sys
+import sys, os
 import csv
 import pymongo
 from sourceIngestion import sourceIngestion
 
-client = pymongo.MongoClient("mongodb+srv://MatteoAnelli:zHgn9oe2DpM2AJNV@mysimbdp-coredms-novzr.mongodb.net/test?retryWrites=true&w=majority")
+client = pymongo.MongoClient(os.environ.get('MONGO_URL'))
 db = client.get_database('test')
 records = db.documents
 
@@ -21,9 +21,3 @@ for i in data:
     insert.append(line.map())
 
 records.insert_many(insert)
-
-#TODO change arcv[0]
-
-
-
-

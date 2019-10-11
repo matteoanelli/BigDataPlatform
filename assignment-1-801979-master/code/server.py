@@ -1,12 +1,14 @@
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 import json
+import os
+
 from producer import producer
 
 app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'mysimbdp-coredms'
-app.config['MONGO_URI'] = 'mongodb+srv://MatteoAnelli:zHgn9oe2DpM2AJNV@mysimbdp-coredms-novzr.mongodb.net/test?retryWrites=true&w=majority'
+app.config['MONGO_URI'] = os.environ.get('MONGO_URL')
 
 mongo = PyMongo(app)
 
@@ -52,11 +54,3 @@ def insert_one():
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-#TODO CHANGE PASSWORD
-# TODO create api for initial delivery
-
-
-# TODO report check structure delivery
-# TODO readme
-# TODO prepare delivery
