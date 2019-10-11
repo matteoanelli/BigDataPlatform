@@ -32,6 +32,20 @@ After that the daemon (rabbit listener) should be launched as well.
 python ingestPOST.py
 ```
 
+A test of the uploading performance has been implemented. It calculate for all the iteration the response time. 
+You can reproduce the results as following:
+```
+./test_ingestion.sh <csv source path>
+```
+In order to reproduce all the trials you have to tune the upper limit of the for loop inside the file.
+The result described in the report have been generated wit
+```
+for i in {1..10}; do
+    time (python ingestSource.py "/home/matteo/Downloads/Indoor_Location_Detection_Dataset.csv") &
+done
+
+wait
+```
 # APIs
 
 After that our microservices are running you can start doing POST/GET request to the APIs.
@@ -57,4 +71,3 @@ be forwarded to the queue RabbitMQ than to the daemon and eventually it will be 
     "room": "1010"
     }
 ```
-
