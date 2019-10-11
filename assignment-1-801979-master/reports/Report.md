@@ -110,3 +110,8 @@ I will change the **mysimbdp-datainges** to have a microservice-base architectur
 The API should provide a means for any developer to perform insert on a large number of entry. In addition, they can perform updates on various attributes. Hence, the API should have an endpoint that can accept in input one or more files and that it is flexible on the structure of it.
 ## 5. Assume that now only mysimbdp-daas can read and write data into mysimbdp-coredms, how would you change your mysimbdp-dataingest (in Part 2) to work with mysimbdp- daas 
 This solution can be implemented adding a new API to the actual server where it can get as input the whole csv file so that the source ingestion should passed from the **mysimbdp-daas** and not directly to the database.
+
+
+# Bonus points
+
+The implementation of **mysimbdp-daas** have been done. Not all the tested have benn implemented though.
