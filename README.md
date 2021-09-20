@@ -1,4 +1,4 @@
-# BigDataPlatform Assignemwnt 1 - Design of a Big Data Platform
+# BigDataPlatform Assignement 1 - Design of a Big Data Platform
 
 ---------------------------------------------------------------------------
 
